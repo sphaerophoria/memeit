@@ -1,0 +1,6 @@
+[package]
+name = "memeit3d"
+version = "0.1.0"
+authors = ["Mick Sayson <mick@sayson.com>"]
+
+[dependencies]
