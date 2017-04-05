@@ -4,13 +4,14 @@ fn idx2(x: usize, y: usize, pitch: usize) -> usize {
 
 struct MemeitDrawer {
     pitch: usize,
+    len: usize,
     input: String,
     canvas: Vec<char>,
 }
 
 impl MemeitDrawer {
     pub fn new(input: &str) -> MemeitDrawer {
-        let len = input.len();
+        let len = input.chars().count();
         let mut canvas = Vec::new();
 
         let width = len * 3;
@@ -25,20 +26,21 @@ impl MemeitDrawer {
 
         MemeitDrawer {
             pitch: width + 1,
+            len: len,
             input: input.to_string(),
             canvas: canvas,
         }
     }
 
     pub fn draw(&mut self) {
-        let len = self.input.len();
+        let len = self.len;
         self.draw2d(if len % 2  == 0{len } else { len - 1}, 0);
         self.draw2d(0, len / 2);
         self.draw_diagonals();
     }
 
     fn draw2d(&mut self, start_x: usize, start_y: usize) {
-        let len =self.input.len();
+        let len = self.len;
         for (i, c) in self.input.chars().enumerate() {
             // Top row
             self.canvas[idx2(i * 2 + start_x, start_y, self.pitch)] = c;
@@ -52,7 +54,7 @@ impl MemeitDrawer {
     }
 
     fn draw_diagonals(&mut self) {
-        let len = self.input.len();
+        let len = self.len;
         for i in 1..len/2 {
             self.canvas[idx2((len / 2 - i) * 2, i, self.pitch)] = '/';
             self.canvas[idx2((len / 2 - i) * 2, i + len - 1, self.pitch)] = '/';
