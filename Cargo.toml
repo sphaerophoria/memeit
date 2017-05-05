@@ -4,7 +4,6 @@ name = "memeit3d"
 version = "0.1.0"
 
 [dependencies]
-clipboard = "0.3.0"
 error-chain = "0.10.0"
 gdk = "0.5.2"
 glib = "0.1.2"
