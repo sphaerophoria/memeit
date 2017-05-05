@@ -4,9 +4,12 @@ name = "memeit3d"
 version = "0.1.0"
 
 [dependencies]
+clipboard = "0.3.0"
 error-chain = "0.10.0"
 gdk = "0.5.2"
+glib = "0.1.2"
+gtk-sys = "0.3.3"
 
 [dependencies.gtk]
-version =  "0.1.2"
-features = ["v3_16"]
+features = ["v3_10"]
+version = "0.1.2"
