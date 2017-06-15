@@ -10,8 +10,8 @@ mod errors {
     error_chain! { }
 }
 
-use glib::translate::ToGlibPtr;
 use gtk::*;
+use gdk::Display;
 use std::rc::Rc;
 use std::cell::RefCell;
 use memeit_drawer::MemeitDrawer;
@@ -19,12 +19,11 @@ use errors::*;
 
 
 fn copy_to_clipboard(text: &str) {
-    let clipboard_name = gdk::Atom::intern("CLIPBOARD");
-    let clipboard: Clipboard = unsafe {
-        glib::translate::from_glib_none(gtk_sys::gtk_clipboard_get(
-            clipboard_name.to_glib_none().0
-        ))
-    };
+
+    let clipboard = Display::get_default()
+        .and_then(|display| Clipboard::get_default(&display))
+        .expect("Failed to get clipboard");
+
     clipboard.set_text(text);
     clipboard.store();
 }
