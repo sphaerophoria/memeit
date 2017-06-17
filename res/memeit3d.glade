@@ -10,7 +10,7 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkEntry" id="meme_entry">
+          <object class="GtkEntry" id="cube_input">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
           </object>
@@ -21,12 +21,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="meme_display">
+          <object class="GtkLabel" id="cube_preview">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="justification">center</property>
-            <property name="monospace">True</property>
+            <property name="can_focus">False</property>
+            <attributes>
+              <attribute name="font-desc" value="Monospace 10"/>
+            </attributes>
           </object>
           <packing>
             <property name="expand">True</property>
